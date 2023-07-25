@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    
+<div id="main_Div_selling_page">
+    <div>
+    <form  id="selling_form" action="" method="post" enctype="multipart/form-data" >
+        {% csrf_token %}
+
+            <div class="form-upload-element">
+                
+            <!-- Send Uploaded images to BE after modified-->
+                <div>
+                    <input type="file" onkeyup="validate_creds(id,name)"  class="inner_div_input_elements"  id="user_images" name="Product_image"  accept="image/*" required>
+                </div>
+
+
+            </div>
+
+
+            <div class="form-upload-element" >    
+                
+                    <div>    
+                        <input type="text" onchange="{find_gst()}" id="GST_NO" class="inner_div_input_elements" name="GST_NO" placeholder="GST Number" required>
+
+                    </div>
+
+                    <div >
+                        <input type="text" onkeyup="validate_creds(id,name)"  class="inner_div_input_elements" id="product_name" name="product_name" placeholder="Product Name" required>
+                    </div>
+
+                    <div >
+                        <select class="inner_div_select_elements" onchange="{category_selected()}" id="subcategory_select"  name="product_category" required >
+                            <option value="">Select-Category</option>
+                            <option value="Home Appliances">Home Appliances</option>
+                            <option value="Medical Equipments">Medical Equipments </option>
+                            <option value="Electrioncs">Electrioncs</option>
+                            <option value="Electricals">Electricals</option>
+                            <option value="Constructions">Constructions</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="AutoMotive">AutoMotive</option>
+                            <option value="Others">Others</option>
+
+
+                        </select>
+
+                    
+
+                    </div>
+                    <div id="other_Cate_selected">
+                        
+                    </div>
+
+                    <div id="sub_category_selection">
+                        <select class=""  id="sub_category_select" onchange="check_for_other()" name="product_sub_category" required >
+                            <option value="">Select-SubCategory</option>
+
+                        </select>
+                    </div>
+
+                    <div id="sub_category_other_selection">
+     
+                    </div>
+
+                    <div>
+                        <input type="text" onkeyup="validate_creds(id,name)" class="inner_div_input_elements" id="brand_name" name="brand_name" placeholder="Brand Name" >
+    
+                    </div>
+                 
+            </div>
+            <div class="form-upload-element">
+
+                <div>
+                    <select class="inner_div_select_elements" name="selling_state" id="state_selection_post_ad" required>
+                        <option value="">State</option>
+                        
+                    </select>
+
+                </div>
+
+                <div>
+                    <select class="inner_div_select_elements" name="selling_city" id="city_selection_post_ad" required>
+                        <option value="">City</option>
+                        
+                    </select>
+
+                </div>
+
+                <div>
+                    <input type="text" onkeyup="validate_creds(id,name)" class="inner_div_input_elements" id="selling_city" name="selling_city_or_village" placeholder="City / Village" required>
+
+                </div>
+                <div>
+                    <input type="number"  onkeyup="validate_creds(id,name)" id="selling_pincode" class="inner_div_input_elements" name="selling_pincode" placeholder="Pin-Code" required>
+
+                </div>
+
+            </div>
+
+
+            <div class="form-upload-element">
+
+                <div>    
+                    <input type="number" onkeyup="validate_creds(id,name)"  id="actual_price_per_item" class="inner_div_input_elements" name="actual_price_per_item" placeholder="Actual Price /Peice" required>
+
+                </div>
+
+                <div>    
+                    <input type="number" onkeyup="validate_creds(id,name)" id="discount_percent" class="inner_div_input_elements" name="discount_percent" placeholder="Discount %" required>
+
+                </div>
+
+                <div >    
+                    <input type="number" onkeyup="validate_creds(id,name)" id="selling_price_per_item" class="inner_div_input_elements" name="selling_price_per_item" placeholder="selling Price /Peice" >
+                    <b id="final_price_div"></b>
+                    <button type="button" id="manual_btn_adding" onclick="{add_manual_price()}">Add Manual</button>
+
+                </div>
+                <div>    
+                    <input type="number" onkeyup="validate_creds(id,name)" id="min_items" class="inner_div_input_elements" name="min_items" placeholder="On Minimum Peices" required>
+
+                </div>
+
+                <script>
+
+
+
+                    // state_selection
+
+                state_list=[
+                "Andaman and Nicobar Islands",
+                "Andhra Pradesh",
+                "Arunachal Pradesh",
+                "Assam",
+                "Bihar",
+                "Chandigarh",
+                "Chhattisgarh",
+                "Dadra and Nagar Haveli",
+                "Daman and Diu",
+                "Delhi",
+                "Goa",
+                "Gujarat",
+                "Haryana",
+                "Himachal Pradesh",
+                "Jammu and Kashmir",
+                "Jharkhand",
+                "Karnataka",
+                "Kerala",
+                "Ladakh",
+                "Lakshadweep",
+                "Madhya Pradesh",
+                "Maharashtra",
+                "Manipur",
+                "Meghalaya",
+                "Mizoram",
+                "Nagaland",
+                "Narora",
+                "Odisha",
+                "Pondicherry",
+                "Punjab",
+                "Rajasthan",
+                "Sikkim",
+                "Tamil Nadu",
+                "Telangana",
+                "Tripura",
+                "Uttar Pradesh",
+                "Uttarakhand",
+                "West Bengal",
+                ]
+                for(let a=0;a<state_list.length;a++){
+                create_opt_states_name=document.createElement("option")
+                create_opt_states_name.value=state_list[a]
+                create_opt_states_name.innerHTML=state_list[a]
+                document.getElementById("state_selection_post_ad").appendChild(create_opt_states_name)
+                }
+
+                // var url_data= window.location.href
+                // var url_state_data=url_data.split("State=")[1].replace("%20"," ")
+                var url_data=window.location.search
+                var url_state_data = new URLSearchParams(url_data).get("State")
+
+                // console.log("DAta",url_data.get("State"))
+                if (url_data){
+                    state_change=document.getElementById("state_selection")
+                    state_change.value=url_state_data != "None" ? url_state_data : ""
+
+                }
+                document.getElementById("state_selection_post_ad").addEventListener("change",(e)=>{
+
+                // below code :- On change the state name we can should city option to filter
+                // document.getElementById("C82674791ity").hidden = false
+                    
+                fetch(`/search_for_citites_92839890104958379482983023/${e.target.value}`,{
+                    method : "GET",
+                }).then(response => {
+                        console.log(response);
+                        return response.text();
+                    }).then(data =>{
+                        data_arr=JSON.parse(data)
+                        data_arr_len = data_arr.length
+                        append_child_at=document.getElementById("city_selection_post_ad")
+                        while (append_child_at.firstChild){
+                            append_child_at.removeChild(append_child_at.firstChild)
+                        }
+                        create_opt_cities_default=document.createElement("option")
+                        create_opt_cities_default.innerHTML="City"
+
+
+                        append_child_at.appendChild(create_opt_cities_default)
+
+                        for(let d1=0;d1<data_arr_len;d1++){
+                            create_opt_cities_name=document.createElement("option")
+                            create_opt_cities_name.value=data_arr[d1]
+                            create_opt_cities_name.innerHTML=data_arr[d1]
+                            append_child_at.appendChild(create_opt_cities_name)
+                        }
+                    }
+
+                    )
+                })
+                </script>
+
+                <script>
+                    function add_manual_price(){
+                        var refer_div_fi=document.getElementById("final_price_div")
+                        while (refer_div_fi.firstChild){
+                            refer_div_fi.removeChild(refer_div_fi.firstChild)
+                        }
+                        console.log("add_manual_price")
+                        var cre_manual_int=document.createElement("input")
+                        cre_manual_int.setAttribute('onkeyup',"{manual_price_adding()}")
+                        cre_manual_int.id="manual_price_entry"
+                        refer_div_fi.appendChild(cre_manual_int)
+
+                        temp_Ref=document.getElementById("manual_btn_adding")
+                        temp_Ref.innerHTML="Del Manual"
+                        temp_Ref.setAttribute("onclick","{remove_manual_price()}")
+
+                        var get_dis_price=document.getElementById("discount_percent")
+                        get_dis_price.required=false
+                        get_dis_price.hidden=true
+                        get_dis_price.value=0
+                        const get_acutal_price=document.getElementById("actual_price_per_item")
+                        get_acutal_price.required=false
+                        get_acutal_price.value=0
+                        get_acutal_price.hidden=true
+                        document.getElementById("selling_price_per_item").value=""
+
+
+                    }
+
+                    function remove_manual_price(){
+
+                        var refer_div_fi=document.getElementById("final_price_div")
+                        while (refer_div_fi.firstChild){
+                            refer_div_fi.removeChild(refer_div_fi.firstChild)
+                        }
+                        
+                        let get_dis_price=document.getElementById("discount_percent")
+                        get_dis_price.required=true
+                        get_dis_price.hidden=false
+                        // get_dis_price.value=""
+                        const get_acutal_price=document.getElementById("actual_price_per_item")
+                        get_acutal_price.required=true
+                        // get_acutal_price.value=""
+                        get_acutal_price.hidden=false
+
+                        temp_Ref=document.getElementById("manual_btn_adding")
+                        temp_Ref.innerHTML="Add Manual"
+                        temp_Ref.setAttribute("onclick","{add_manual_price()}")
+                        document.getElementById("selling_price_per_item").value=""
+
+                    }
+
+                    function manual_price_adding(){
+
+                     
+                        var get_value_of_manual_entry=document.getElementById("manual_price_entry").value
+                        document.getElementById("selling_price_per_item").value = get_value_of_manual_entry
+                
+                    } 
+
+                    var get_value = 0
+                    var get_discount_value = 0
+
+                    var get_acutal_price=document.querySelector("#actual_price_per_item").addEventListener("keyup",(e)=>{
+                    get_value=e.target.value
+                    console.log("get_value : ",get_value)
+                    document.getElementById("selling_price_per_item").value=get_value
+                    append_final_price()
+                    })
+
+                    var get_discount_percent = document.querySelector("#discount_percent").addEventListener("keyup",(e)=>{
+                    get_discount_value=e.target.value
+                    append_final_price()
+                    })
+
+                    function append_final_price(){
+                        document.getElementById("selling_price_per_item").value=((get_value*(100-get_discount_value))/100)
+                    }
+                </script>
+                <div>    
+                    <input type="text" onkeyup="validate_creds(id,name)" id="retailer_name" class="inner_div_input_elements" name="retailer_name" placeholder="Retailer Name" required>
+
+                </div>
+                
+
+                <div id="additional_data">
+
+                </div>
+
+
+             
+            </div>
+          
+            <div class="">
+                <button id="selling_submit_btn" type="submit">
+                    POST AD
+                </button>
+            </div>
+        
+        </form>
+    </div>
+<hr>
+    <div>
+
+    </div>
+    
+
+</div>
+    
+
+
+<script>
+    function find_gst(){
+        var result_res ="true"
+        gst_no=document.getElementById("GST_NO").value
+
+        console.log("gst-no : ",gst_no)
+
+
+        const data = null;
+
+        const xhr = new XMLHttpRequest();
+        xhr.withCredentials = true;
+
+        if(result_res == "true") {
+
+            xhr.addEventListener('readystatechange', function () {
+            if (this.readyState === this.DONE) {
+                response=JSON.parse(this.responseText)
+                console.log(JSON.parse(this.responseText));
+
+                if (response.success==true){
+
+                console.log("response.message : ",response.data.adr)
+                console.log("response.message : ",response.data.pan)
+                console.log("response.message : ",response.data.pincode)
+                document.getElementById("selling_pincode").value=response.data.pincode
+                document.getElementById("retailer_name").value=response.data.tradeName
+            
+                if (response.data.pan){
+                    cre_ele_pan=document.createElement("input")
+                    cre_ele_pan.type="text"
+                    cre_ele_pan.hidden=true
+                    cre_ele_pan.value=response.data.pan
+                    console.log("pan : ",response.data.pan)
+                    cre_ele_pan.name="ecomm_user_pan_via_gst"
+                    document.getElementById("additional_data").appendChild(cre_ele_pan)
+                    
+                    try{
+                        cre_ele_address=document.createElement("textarea")
+                        cre_ele_address.type="text"
+                        cre_ele_address.hidden=true
+                        cre_ele_address.value=response.data.adr
+                        console.log("adr : ",response.data.adr)
+                        cre_ele_address.name="ecomm_user_adr_via_gst"
+                        document.getElementById("additional_data").appendChild(cre_ele_address)
+                    }catch{
+                        
+                    }
+
+                }
+
+
+            }
+        }
+          
+});
+
+        xhr.open('GET', `https://gst-return-status.p.rapidapi.com/free/gstin/${gst_no}`);
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        // xhr.setRequestHeader('X-RapidAPI-Key', '2d5f9283c7msh593b74279861127p1f86acjsn0b196b9397ba');
+        
+        xhr.setRequestHeader('X-RapidAPI-Key', '9add5c4f91mshe1db63a2553cde5p12f568jsn0adc70fdb743');
+
+
+        xhr.setRequestHeader('X-RapidAPI-Host', 'gst-return-status.p.rapidapi.com');
+
+        xhr.send(data);
+
+    
+}}
+    
+
+</script>
+
+
+<script>
+     function validate(content,format){
+        var content_format= new Object()
+        // console.log("format is : ",format)
+        content_format= {
+            "product_name": "^[a-zA-Z ]+$",
+            "selling_pincode": "^[1-9][0-9]{5}$",   
+            "property_floor": "^[0-9]+$",
+            "house_area" : "^[0-9]{1,9}$",
+            "selling_city": "^[a-zA-Z ]+$",
+            "monthly_rent": "^[0-9]{1,9}$",
+            "min_items": "^[0-9]+$",
+        }
+
+        re=new RegExp(content_format[format])
+
+        // console.log("re",re)
+        // console.log("content : ",content)
+        
+        result=re.test(content)
+
+        return result        
+
+    }    
+
+    function validate_creds(id,name){
+       var check=document.getElementById(id).value
+       result=validate(check,name)
+    //    console.log("Type : ",name)
+    //    console.log("op",result)
+       if (check){
+                if (result){
+                    document.getElementById(id).style=""
+
+                    
+                }else{
+                    document.getElementById(id).style="outline:3px solid red"
+                  
+                    
+                }
+        }
+  
+        id1=document.getElementById("property_owner_name_div").style.outlineColor
+        id2=document.getElementById("property_city_div").style.outlineColor
+        id3=document.getElementById("property_pincode_div").style.outlineColor
+        id4=document.getElementById("property_floor_div").style.outlineColor
+        id5=document.getElementById("property_squareft_div").style.outlineColor
+        id6=document.getElementById("property_monthly_rent_div").style.outlineColor
+        // id7=document.getElementById("confimr_password").style.outlineColor
+
+
+        if (id1 || id2 || id3 || id4 || id5 || id6){
+        submit=document.getElementById("selling_submit_btn")
+        submit.disabled="disabled"
+        submit.style="background-color:#616161;cursor: not-allowed;"
+        }else{
+        submit=document.getElementById("selling_submit_btn")
+        submit.disabled=""
+        submit.style=""
+        }
+
+    }
+
+</script>
+
+<script>
+    var Home_Appliances = [
+         "Kitchen Appliances",
+         "Kitchenware",
+         "Home Furnishing",
+         "Home Decoratives",
+         "Furniture",
+         "Others"
+     ]
+   
+    var Medical_Equipments = [
+         "Tablets & Syrups",
+         "Syringes",
+         "Nebulizer",
+         "Thermometer",
+         "Sphygmomanometer",
+         "Hospital bed",
+         "Stethoscope",
+         "Wheelchair",
+         "Scalpel",
+         "Operating table",
+         "Electrocardiography",
+         "Defibrillation",
+         "Ventilator",
+         "Surgical instrument",
+         "Others"
+
+     ]
+
+     var Electrioncs = [
+         "Mobiles & Tablets",
+         "Mobile & Tablet Accessories",
+         "Tv's and Laptop's",
+         "Headphones & Earphones",
+         "Speakers & Soundbars",
+         "Watches",
+         "Storage",
+         "Computers Peripherals",
+         "Cameras & Accessories",
+         "Active and Passive Equipments",
+         "Others",
+     ]
+
+     var Fashion = [
+         "Men's Topwear",
+         "Men's Activewear",
+         "Men's Footwear",
+         "Men's Accessories",
+         "Men's Bottomwear",
+         "Indian Ethnicwear",
+         "Women's Footwear",
+         "Women's Accessories",
+         "Others",
+
+     ]
+
+     var AutoMotive=[
+         "Bike Accessories",
+         "Car Accessories",
+         "Auto Accessories",
+         "Transport Accessories",
+         "Others"
+     ]
+
+
+     var Electricals=[
+         "Wires & Cables",
+         "Distribution Boards",
+         "Industrial Switches & Controls",
+         "Micro Drives",
+         "Switch and Sockets",
+         "Circuit Breakers and Fuses",
+         "Power Generation and Transformers",
+         "Relays and contactors",
+         "Others"
+
+
+     ]
+     var Constructions=[
+         "Cement",
+         "Bricks",
+         "Soil",
+         "Water",
+         "Steel",
+         "Bitumen",
+         "Concrete",
+         "Structured Steel",
+         "Binding Wires",
+         "Fly Ash",
+         "Aggregate",
+         "Blocks",
+         "Timber",
+         "Nails",
+         "Lime",
+         "Bamboo",
+         "Pipes",
+         "Glasses",
+         "Tiles",
+         "Marble",
+         "Mud",
+         "Metal Steel",
+         "Tar",
+         "Chipborad",
+         "Rope",
+         "Stone",
+         "Green Cement",
+         "Granite",
+         "Primer",
+         "Paints",
+         "Gypsum",
+         "Gypsum Board",
+         "Ceramics",
+         "Copper",
+         "Sanitary and Fittings",
+         "Gravel",
+         "Others"
+     ]
+     // "sub_category_selection"
+     categories=[{"Home Appliances":Home_Appliances},{"Medical Equipments":Medical_Equipments},{"Electrioncs":Electrioncs},{"Fashion":Fashion},{"AutoMotive":AutoMotive},{"Electricals":Electricals},{"Constructions":Constructions}]
+     function category_selected(){
+
+        //  Clear child before proceed
+        clear_all_child_element=document.getElementById("sub_category_select")
+        while (clear_all_child_element.firstChild) {
+            clear_all_child_element.removeChild(clear_all_child_element.firstChild);
+
+        } 
+
+        other_Cate_selected=document.getElementById("sub_category_other_selection")
+        other_Cate_selected= document.getElementById("other_Cate_selected")
+
+        while (other_Cate_selected.firstChild) {
+            other_Cate_selected.removeChild(other_Cate_selected.firstChild);
+
+        } 
+        // while (child_element2.firstChild) {
+        //     child_element2.removeChild(child_element2.firstChild);
+
+        // } 
+        
+        
+        
+         category=(document.getElementById("subcategory_select").value).toString()
+         console.log("category",category)
+
+         for(let b=0;b<categories.length;b++){
+            
+
+             if (category == Object.keys(categories[b])[0] ){
+                sub_category_data=Object.values(categories[b])[0]
+                 for(let c=0;c<sub_category_data.length;c++){
+                 cre_option=document.createElement("option")
+                 cre_option.value=sub_category_data[c]
+                 cre_option.innerHTML=sub_category_data[c]
+                 document.getElementById("sub_category_select").appendChild(cre_option)
+                 
+                 }
+                 
+             }else if(category == "Others"){
+                create_input=document.createElement("input")
+                create_input.name="other_category_selections"
+                create_input.required=true
+                create_input.placeholder="Enter Product Category"
+                document.getElementById("other_Cate_selected").appendChild(create_input)
+                cre_opt=document.createElement("option")
+                cre_opt.value="others"
+                cre_opt.selected=true
+                cre_opt.innerHTML="Others"
+                document.getElementById("sub_category_select").appendChild(cre_opt)
+
+                break
+             }
+
+         }
+     }
+
+     function check_for_other(){
+        Other_clicked=document.getElementById("sub_category_select").value
+        sub_category_other_child_element=document.getElementById("sub_category_other_selection")
+        try{
+        while (sub_category_other_child_element.firstChild) {
+            sub_category_other_child_element.removeChild(sub_category_other_child_element.firstChild);
+
+        } 
+    }catch{
+        
+    }
+
+        if(Other_clicked== "Others"){
+
+            cre_input_ele=document.createElement("input")
+            cre_input_ele.type="text"
+            cre_input_ele.name="other_value_added"
+            cre_input_ele.required=true
+            cre_input_ele.placeholder="Enter Other Value"
+            document.getElementById("sub_category_other_selection").appendChild(cre_input_ele)
+        }
+    }
+
+ </script>
+
+
+
+
+
+
+
+
+
+</body>
+</html>

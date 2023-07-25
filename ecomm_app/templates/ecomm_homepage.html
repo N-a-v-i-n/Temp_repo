@@ -1,0 +1,2402 @@
+{% include 'ecomm_headers.html' %}
+    {% load static %}
+    {% if user_current_loc %}
+    <!-- <div id="current_user_loc" style="display: flex; justify-content: end;"> -->
+        <script>
+            document.getElementById("current_428479").innerHTML= "{{user_current_loc}}"
+        </script>
+ 
+       
+    </div>   
+    {% elif user_district  %}
+
+    <script>
+        document.getElementById("current_428479").innerHTML= "{{user_district}}"
+    </script>
+
+    {% endif %}
+
+    <div id="all_add_of_best_deals">
+        <div id="arrows567890">
+            <a href=""><img id="left53467" src="/static/ecomm_pics/homepg/left_arrow.png" alt=""></a>
+            <a href=""><img  id="right786543567" src="/static/ecomm_pics/homepg/right_arrow.png" alt=""></a>
+
+        </div>
+        <div id="best_3928492_deals">
+            add’s of best deals
+        </div>
+
+    </div>
+
+    <div id="all_categories_2973298div_">
+        <div id="sub_918390423">
+
+            <a href=""><ul><b>home appliances</b></ul></a>
+            <a href=""><ul><b>medical equipments</b></ul></a>
+            <a href=""><ul><b>electrioncs</b></ul></a>
+            <a href=""><ul><b>electricals</b></ul></a>
+            <a href=""><ul><b>constructions</b></ul></a>
+            <a href=""><ul><b>fashion</b></ul></a>
+            <a href=""><ul><b>autoMotive</b></ul></a>
+            <a href=""><ul><b>books & stationary</b></ul></a>
+            <a href=""><ul><b>beauty & personal care</b></ul></a>
+            <a href=""><ul><b>others</b></ul></a>
+        </div>
+    </div>
+
+
+    <style>
+        #best_3928492_deals{
+            text-align: center;
+            padding-top: 10%;
+        }
+        #left53467{
+            position: absolute;
+            left: 80px;
+            width: 20px;
+            top: 7.5em;
+
+        }
+        #right786543567{
+            position: absolute;
+            right: 80px;
+            width: 20px;
+            top: 7.5em;
+
+        }
+        #arrows567890{
+            display: flex;
+            position: relative;
+        }
+       #all_add_of_best_deals {
+        background: rgba(255, 214, 0, 0.77);
+        height: 295px;
+        margin-bottom: 7px;
+
+        }
+        #sub_918390423{
+            display: flex;
+    transform: translateY(2px);
+    justify-content: space-around;
+
+        }
+        #sub_918390423 ul{
+            padding :0px;
+            font-weight: 600;
+        }
+        #sub_918390423 a{
+            text-decoration: none;
+            color: black;
+        }
+        #all_categories_2973298div_{
+            height: 60px;
+            background: #53FFEB;
+            text-align: center;
+            margin-bottom: 7px;
+
+        }
+    </style>
+
+    <div id="main_div_homepg" >
+
+
+        <div class="main_sub_div" id="temp0" >
+            <div class="header_4938492sjaxhb">
+                <h2>deals of the day</h2>
+            </div>
+            <div id="deal84920maindetails">
+
+            
+                {% for x in construction_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Home Appliances">See more</a>
+            </div>
+
+        </div>
+
+        <style>
+            #linear32424_gradient pre{
+                margin: 0%;
+            }
+            .Offer_b13244{
+                font-size: 9px;
+                font-weight: 900;
+                color: red;
+                position: absolute;
+                bottom: 56px;
+                left: 15px;
+                background-color: ghostwhite;
+                width: 38px;
+                text-align: center;
+                z-index: 1;
+            }
+            #wishlist_img{
+                top: 20px;
+                position: absolute;
+                width: 30px;
+                right: 20px;
+
+            }
+            #deal9392849{
+                margin-right: 15px;
+            }
+            #deal84920maindetails{
+                display: flex;
+                overflow: scroll;
+
+            }
+            #sub_context932894{
+                padding-top: 17px;
+                width: 60%;
+                padding-left: 15px;
+                box-sizing: border-box;
+            }
+            #sub_context932894 pre{
+                
+                color: white;
+                padding: 0px;
+                font-size: 17px;
+
+            }
+            #sub_map_context220943 img{
+                padding-top: 8px;
+
+            }
+            #sub_map_context220943{
+                text-align: center;
+                width: 40%;
+                padding-left: 10%;
+
+            }
+            #map_point_view49894{
+                width: 25px;
+            }
+
+            #linear32424_gradient{
+           
+                position: absolute;
+                bottom: 0px;
+                border-radius: 6px;
+                font-size: 25px;
+                display: flex;
+                width: 314px;
+                height: 85px;
+                background: linear-gradient(180deg,rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 1) 100%);
+            }
+            .sub_sub817328981{
+                width: 100%;
+                text-align: center;
+                padding-top: 2.5%;
+            }
+            .i279942{
+                width: 25px;
+            }    
+            .btn_sd342794{
+                width: 314px;
+                height: 40px;
+                margin-top: 5px;
+                background: #129286;
+                border-radius: 8px;
+                display: flex;
+
+
+            }
+            .btn_sd342794color1{
+                background: #129286;
+            }
+            .btn_sd342794color2{
+                background: #14B8A6;
+
+            }
+            .btn_sd342794 button{
+                width: 235px;
+                height: 100%;
+                border: none;
+                border-right: 0.5px solid;
+                border-top-left-radius: 6px;
+                border-bottom-left-radius: 6px;
+                text-align: start;
+                padding-left: 20px;
+                font-size: 15px;
+                color: white;
+
+            }
+            #proct132398img_div{
+                border:1px solid lightgray;
+                width: 314px;
+                height: 314px;
+                border-radius: 6px;
+                position: relative;
+
+            }
+            #proct132398img{
+                width: 314px;
+                height: 314px;
+                border-radius: 6px;
+
+            }
+        </style>
+
+        <div class="main_sub_div" id="temp0" >
+            <div class="header_4938492sjaxhb">
+                <h2>trending categories</h2>
+            </div>
+            <div style="display: flex; overflow: scroll;padding-left: 10px;">
+                {% for x in construction_category %}
+                <div class="main_sub_s11_div">
+                    
+
+                    <div style="position: relative;">
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <div id="hp_offer_tag">{{x.discount_price}}%</div>
+                        {% endif %}
+                        <a href=""><img id="hpimg1011" src="/static/media/{{x.Product_image}}" alt=""></a>
+                        <div id="loc_div_hp1011"><a href=""><img id="loc_img_1234294" src="/static/ecomm_pics/homepg/loc_logo.png" alt=""></a><p>{{x.selling_city}}</p></div>
+                    </div>
+
+                    <div class="hp_dis_div101">
+                        <div id="hp_dis101">
+                            <p>{{x.product_name}}</p>
+                            <b>₹{{x.selling_price_per_item}}</b> &nbsp;{% if x.actual_price != 0 and x.actual_price != None %}<b style="color: grey;"><del>{{x.actual_price}}</del></b>{% endif %}
+                        </div>
+                        <div id="hp_maxpr_101">
+                            <b>4.5</b><img src="/static/ecomm_pics/homepg/ratingstar.png" alt=""><br>
+                            <b id="hp_maxpr_b2">MOQ {{x.min_items}}+</b>
+
+                        </div>
+                        
+                    </div>
+
+                    <div id="cta_hp_btns928392">
+                        <div id="call_btn_div4827493" style="background-color: #008580;width: 50%;text-align: center;border-radius: 8px 0px 0px 8px;">
+                            <a href=""><img class="i279222"  src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>
+                        <div id="msg_btn_div4827493" style="background-color: #00D1C2;width: 50%;text-align: center; border-radius: 0px 8px 8px 0px;">
+                            <a href=""><img class="i279222"src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn"></a>
+                        </div>
+                    </div>
+
+                </div>
+
+                {% endfor %}
+
+            </div>
+
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Home Appliances">See more</a>
+            </div>
+            
+
+        </div>
+<!-- 
+
+font-family: Roboto;
+font-size: 16px;
+font-weight: 600;
+line-height: 23px;
+letter-spacing: 0.015em;
+text-align: left;
+
+
+
+-->
+
+
+        <style>
+            .i279222{
+                width: 25px;
+                padding: 4px;
+            }
+            #cta_hp_btns928392{
+                /* border: 1px solid red; */
+                width: 227px;
+                height: 32px;
+                display: flex;
+                border-radius: 8px;
+                padding-top: 8px;
+            }
+
+            #hp_offer_tag{
+                position: absolute;
+                top: 9px;
+                width: 49px;
+                height: 18px;
+                background-color: #00A8A0;
+                border-radius: 0px 50px 50px 0px;
+                text-align: center;
+                font-weight: 900;
+                color: white;
+                font-size: 14px;
+                padding: 1px;
+                box-sizing: border-box;
+            }
+            #loc_div_hp1011 p{
+                font-family: Roboto;
+                font-size: 10px;
+                font-weight: 900;
+                line-height: 4px;
+                letter-spacing: 0.015em;
+                margin: 0px;
+
+            }
+            #loc_img_1234294{
+                height: 24px;
+                width: 24px;
+            }
+            #loc_div_hp1011{
+                position: absolute;
+                right: 16px;
+                bottom: 12px;
+                /* border: 1px solid red; */
+                text-align: center;
+            }
+            #hp_maxpr_b2{
+                font-family: Roboto;
+                font-size: 16px;
+                font-weight: 600;
+                line-height: 23px;
+                letter-spacing: 0.015em;
+                text-align: left;
+            }
+            #hp_maxpr_101 img{
+                height: 13px;
+                width: 13px;
+                padding: 0px 3px;   
+                }
+            #hp_dis101 p{
+                margin: 4px 0px;
+                font-family: Roboto;
+                font-size: 12px;
+                font-weight: 600;
+                line-height: 17px;
+                letter-spacing: 0.015em;
+                /* text-align: left; */
+            }
+            .main_sub_s11_div{
+                width: 227px;
+                margin-right: 10px;
+            }
+            .hp_dis_div101{
+                display: flex;
+                /* border: 1px solid red; */
+
+            }
+            #hp_dis101{
+                width: 60%;
+                /* border: 1px solid blue; */
+
+            }
+            #hp_maxpr_101{
+                text-align: end;
+                padding-top: 5px;
+                width: 40%;
+                /* border: 1px solid blue; */
+                padding-top: 5px;
+            }
+            #hpimg1011{
+                height: 200px;
+                width: 227px;
+                border-radius: 8px;
+                background-color:#D9D9D9;
+;
+            }
+        </style>
+
+        <div class="main_sub_div" id="temp0" >
+            <div class="header_4938492sjaxhb">
+                <h2>sellers from cities</h2>
+            </div>
+
+
+
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Home Appliances">See more</a>
+            </div>
+
+        </div>
+
+        <div class="main_sub_div" id="temp0" >
+
+            <div class="header_4938492sjaxhb">
+                <h2>Home Accessories</h2>
+            </div>
+            <!-- <div class="main_sub_div_0621312">  
+
+
+                {% for x in home_category %}
+                <div class="home_pg_product_container" id=Home_Container">
+
+                    <div id="img_container">
+                        
+                            <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                       
+                    </div>
+                    <div>
+                        <pre>  <b>{{x.product_name}}</b></pre>
+                    </div>
+                    <div> 
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <pre style="position: relative;"> <b class="Offer_b9832847">{{x.discount_price}}% Off</b></pre>
+                        {% else %}
+                        <pre>  </pre>
+                        {% endif %}
+                        <pre class="container_pre_tag">  {% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 18px;">₹{{x.selling_price_per_item}}</b> /peice <em>(On {{x.min_items}}+ Orders)</em> </pre>
+                    </div>
+                    <style>
+                     
+                    </style>
+                    <div>
+                        <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                    </div>
+                    <div>
+                        <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                    </div>
+                    <div>
+                        
+                        <pre>  <a ><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn">CALL NOW</button></a></pre>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">VIEW MAP</button></a></pre>
+        
+                    </div>
+        
+
+                   
+
+                </div>
+                {% endfor %}
+            
+            </div>
+                
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Home Appliances">See more</a>
+            </div> -->
+
+            <div id="deal84920maindetails">
+
+            
+                {% for x in home_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Home Appliances">See more</a>
+            </div>
+
+        </div>
+
+        <div class="main_sub_div">
+            <div class="header_4938492sjaxhb">
+                <h2>Automotive Accessories</h2>
+            </div>
+            <!-- <div class="main_sub_div_0621312">     
+
+                {% for x in automotive_category %}
+                <div class="home_pg_product_container" id="Automotive_Container">
+
+                    <div id="img_container">
+                        <a href="">
+                            <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <pre>  <b>{{x.product_name}}</b></pre>
+                    </div>
+                    <div> 
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <pre style="position: relative;"> <b class="Offer_b9832847">{{x.discount_price}}% Off</b></pre>
+                        {% else %}
+                        <pre>  </pre>
+                        {% endif %}
+                        <pre class="container_pre_tag">  {% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 18px;">₹{{x.selling_price_per_item}}</b> /peice <em>(On {{x.min_items}}+ Orders)</em> </pre>
+                    </div>
+                    <div>
+                        <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                    </div>
+                    <div>
+                        <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                    </div>
+                    <div>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">CALL NOW</button></a></pre>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">VIEW MAP</button></a></pre>
+                    </div>
+        
+
+                </div>
+                {% endfor %}
+               
+            </div> -->
+
+            <div id="deal84920maindetails">
+
+            
+                {% for x in automotive_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="AutoMotive">See more</a>
+            </div>
+
+            
+        </div>
+        <div class="main_sub_div">
+            <div class="header_4938492sjaxhb">
+                <h2>Fashions</h2>
+            </div>
+            <!-- <div class="main_sub_div_0621312">     
+
+                {% for x in fasion_category %}
+                <div class="home_pg_product_container" id="Fashion_Container">
+                
+                    <div id="img_container">
+                        <a href="">
+                            <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <pre>  <b>{{x.product_name}}</b></pre>
+                    </div>
+                    <div> 
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <pre style="position: relative;"> <b class="Offer_b9832847">{{x.discount_price}}% Off</b></pre>
+                        {% else %}
+                        <pre>  </pre>
+                        {% endif %}
+                        <pre class="container_pre_tag">  {% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 18px;">₹{{x.selling_price_per_item}}</b> /peice <em>(On {{x.min_items}}+ Orders)</em> </pre>
+                    </div>
+                    <div>
+                        <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                    </div>
+                    <div>
+                        <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                    </div>
+                    <div>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">CALL NOW</button></a></pre>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %}class="btn">VIEW MAP</button></a></pre>
+                    </div>
+
+                </div>
+                {% endfor %}
+            
+            </div> -->
+
+            <div id="deal84920maindetails">
+
+            
+                {% for x in fasion_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Fashion">See more</a>
+            </div>
+        </div>
+
+        <div class="main_sub_div">
+            <div class="header_4938492sjaxhb">
+                <h2>Electricals </h2>
+            </div>
+            <!-- <div class="main_sub_div_0621312">     
+
+                {% for x in electical_category %}
+
+                <div class="home_pg_product_container" id="Electrical_Container">
+                    <div id="img_container">
+                        <a href="">
+                            <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <pre>  <b>{{x.product_name}}</b></pre>
+                    </div>
+                    <div> 
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <pre style="position: relative;"> <b class="Offer_b9832847">{{x.discount_price}}% Off</b></pre>
+                        {% else %}
+                        <pre>  </pre>
+                        {% endif %}
+                        <pre class="container_pre_tag">  {% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 18px;">₹{{x.selling_price_per_item}}</b> /peice <em>(On {{x.min_items}}+ Orders)</em> </pre>
+                    </div>
+                    <div>
+                        <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                    </div>
+                    <div>
+                        <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                    </div>
+                    <div>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">CALL NOW</button></a></pre>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">VIEW MAP</button></a></pre>
+        
+                    </div>
+
+                </div>
+                {% endfor %}
+            
+            </div> -->
+
+            <div id="deal84920maindetails">
+
+            
+                {% for x in electical_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Electricals">See more</a>
+            </div>
+            
+        </div>
+        <div class="main_sub_div">
+            <div class="header_4938492sjaxhb">
+                <h2>Electrioncs</h2>
+            </div>
+            <!-- <div class="main_sub_div_0621312">     
+
+                {% for x in electronic_category %}
+                
+                <div class="home_pg_product_container" id="Electronic_Container">
+
+                    <div id="img_container">
+                        <a href="">
+                            <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <pre>  <b>{{x.product_name}}</b></pre>
+                    </div>
+                    <div> 
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <pre style="position: relative;"> <b class="Offer_b9832847">{{x.discount_price}}% Off</b></pre>
+                        {% else %}
+                        <pre>  </pre>
+                        {% endif %}
+                        <pre class="container_pre_tag">  {% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 18px;">₹{{x.selling_price_per_item}}</b> /peice <em>(On {{x.min_items}}+ Orders)</em> </pre>
+                    </div>
+                    <div>
+                        <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                    </div>
+                    <div>
+                        <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                    </div>
+                    <div>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">CALL NOW</button></a></pre>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">VIEW MAP</button></a></pre>
+        
+                    </div>
+        
+
+                </div>
+
+                {% endfor %}
+            
+            </div> -->
+
+            <div id="deal84920maindetails">
+
+            
+                {% for x in electronic_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Electrioncs">See more</a>
+            </div>
+        </div>
+        <div class="main_sub_div">
+            <div class="header_4938492sjaxhb">
+                <h2>Medical Accessories</h2>
+            </div>
+            <!-- <div class="main_sub_div_0621312">     
+                {% for x in medical_category %}
+
+                <div class="home_pg_product_container" id="Medical_Container">
+                    <div id="img_container">
+                        <a href="">
+                            <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <pre>  <b>{{x.product_name}}</b></pre>
+                    </div>
+                    <div> 
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <pre style="position: relative;"> <b class="Offer_b9832847">{{x.discount_price}}% Off</b></pre>
+                        {% else %}
+                        <pre>  </pre>
+                        {% endif %}
+                        <pre class="container_pre_tag">  {% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 18px;">₹{{x.selling_price_per_item}}</b> /peice <em>(On {{x.min_items}}+ Orders)</em> </pre>
+                    </div>
+                    <div>
+                        <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                    </div>
+                    <div>
+                        <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                    </div>
+                    <div>
+                        <pre>  <a><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">CALL NOW</button></a></pre>
+                        <pre>  <a><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">VIEW MAP</button></a></pre>
+        
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div> -->
+
+            <div id="deal84920maindetails">
+
+            
+                {% for x in medical_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Medical Equipments">See more</a>
+            </div>
+
+        </div>
+<!-- construction_category -->
+        <div class="main_sub_div">
+            <div class="header_4938492sjaxhb">
+                <h2>Construction Accessories</h2>
+            </div>
+            <!-- <div class="main_sub_div_0621312">     
+                {% for x in construction_category %}
+            
+                <div class="home_pg_product_container" id="Construction_Container">
+                    <div id="img_container">
+                        <a href="">
+                            <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <pre>  <b>{{x.product_name}}</b></pre>
+                    </div>
+                    <div> 
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <pre style="position: relative;"> <b class="Offer_b9832847">{{x.discount_price}}% Off</b></pre>
+                        {% else %}
+                        <pre>  </pre>
+                        {% endif %}
+                        <pre class="container_pre_tag">  {% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 18px;">₹{{x.selling_price_per_item}}</b> /peice <em>(On {{x.min_items}}+ Orders)</em> </pre>
+                    </div>
+                    <div>
+                        <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                    </div>
+                    <div>
+                        <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                    </div>
+                    <div>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">CALL NOW</button></a></pre>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">VIEW MAP</button></a></pre>
+
+                    </div>
+
+                </div>
+                {% endfor %}
+            </div> -->
+
+            <div id="deal84920maindetails">
+
+            
+                {% for x in construction_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+
+
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Constructions">See more</a>
+            </div>
+        </div>
+
+
+
+        <div class="main_sub_div">
+            <div class="header_4938492sjaxhb">
+                <h2>Other Accessories</h2>
+            </div>
+            <!-- <div class="main_sub_div_0621312">     
+
+                {% for x in Other_category %}
+                <div class="home_pg_product_container" id="Other_Container">
+                
+                    <div id="img_container">
+                        <a href="">
+                            <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                        </a>
+                    </div>
+                    <div>
+                        <pre>  <b>{{x.product_name}}</b></pre>
+                    </div>
+                    <div> 
+                        {% if x.discount_price != 0 and x.discount_price != none %}
+                        <pre style="position: relative;"> <b class="Offer_b9832847">{{x.discount_price}}% Off</b></pre>
+                        {% else %}
+                        <pre>  </pre>
+                        {% endif %}
+                        <pre class="container_pre_tag">  {% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 18px;">₹{{x.selling_price_per_item}}</b> /peice <em>(On {{x.min_items}}+ Orders)</em> </pre>
+                    </div>
+                    <div>
+                        <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                    </div>
+                    <div>
+                        <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                    </div>
+                    <div>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">CALL NOW</button></a></pre>
+                        <pre>  <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">VIEW MAP</button></a></pre>
+        
+                    </div>
+
+                </div>
+                {% endfor %}
+            
+            </div>  -->
+
+            <div id="deal84920maindetails">
+
+            
+                {% for x in Other_category %}
+                <div id="deal9392849">
+
+                
+                    <div style="text-align: center; width: 314px;" >
+                        <pre style="font-size: 20px;"><b>{{x.product_name}}</b></pre>
+                    </div>
+                    
+                   
+                    <div id="proct132398img_div">
+
+                        <div id="wishlist02913">
+                            <img id="wishlist_img"src="/static/ecomm_pics/homepg/heart_white.png" alt="wishlist">
+                        </div>
+
+                            {% if x.discount_price != 0 and x.discount_price != none %}
+                            <p class="Offer_b13244">{{x.discount_price}}% Off</p>
+                            {% endif %}
+                    
+                        <img id="proct132398img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %}  alt="product image">
+
+                        <div id="linear32424_gradient">
+                            <div id="sub_context932894">
+                              
+                                <pre><b>{% if x.actual_price != 0 and x.actual_price != None %}<del style="font-size: 12px;">₹{{x.actual_price}}</del> {% endif %}<b style="font-size: 23px;">₹{{x.selling_price_per_item}}</b>/per</b></pre>
+                                <pre>(On {{x.min_items}}+ Orders)</pre>
+
+                            </div>
+                            <div id="sub_map_context220943">
+                                    <a href=""><img id="map_point_view49894" src="/static/ecomm_pics/headers/loc.png" alt="location"></a>
+                                    <pre style="margin: 0px;
+                                    font-size: 10px;
+                                    color: white;
+                                    text-wrap: balance;
+                                    ">{{x.selling_city}}</pre>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color1"> 
+                        <div >
+                            <a ><button {% if user_status %} onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn btn_sd342794color1" >call now</button></a>
+                        </div> 
+                        <div class="sub_sub817328981">
+                            <a href=""><img class="i279942" src="/static/ecomm_pics/homepg/phone.png" alt="call_btn"></a>
+                        </div>                 
+                    </div>
+                    <div class="btn_sd342794 btn_sd342794color2">
+                        <div>
+                            <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn btn_sd342794color2">send message</button></a>
+                        </div>
+                        <div class="sub_sub817328981">
+                            <img class="i279942" src="/static/ecomm_pics/homepg/msg.png" alt="msg_btn">
+                        </div>
+
+                    </div>
+                </div>
+
+                {% endfor %}
+
+            </div>
+            <br>
+
+            <div class="m0_4204_re">
+                <a onclick="{call_redirection(id)}" id="Others">See more</a>
+            </div>
+        </div>
+
+            <!-- Comparing div
+            <div class="homepg_comparing_div"  style="display:none">
+                <div>
+                    <pre>Retailer <b>Krishna Printers</b>              ₹ xxxx /peice </pre>
+                </div>
+                <div>
+                    <pre>Retailer <b>KK Traders</b>                    ₹ xxxx /peice </pre>
+                </div>
+                <div>
+                    <pre>Retailer <b>Ganesh Electronics</b>            ₹ xxxx /peice </pre>
+                </div>
+            </div> -->
+
+
+
+    <!-- <div id="esri-map-container"></div> -->
+
+
+
+        <!-- Login PopUp Integrations -->
+        <div class="login_popup_div_integration">
+
+
+            <div class="div_login-form-elements" id="login_form_div">
+          
+              <form  method="post" >
+                {% csrf_token %}
+                <div id="remove_popup_btn_login">
+                  <!-- &#10062; -->
+                  <b>X</b>
+                </div>
+                <div class="login-form-elements_title">
+                  <h3>Login</h3>
+                </div>
+                <div class="login-form-elements">
+                  <input type="email" id="login_email_id" name="login_email_id" class="login_form_input_element"  placeholder="Email" required >
+                </div>
+                <div class="login-form-elements">
+                  <input type="password" id="login_email_password" class="login_form_input_element" name="login_email_password" placeholder="Password" required>
+                </div>
+    
+                <div id="email_validate" style="margin-left:5%;width: 60%;border: none;outline: none; font-weight: 600;">
+                  <p style=" color: red;">Email or Password is Wrong, Please Register !!</p>
+                </div>
+    
+    
+    
+                <div id="sign_in_register_forgot_password_div">
+    
+                
+                    <div class="login-form-elements">
+                      <button type="submit" id="sign_in_btn_home">SIGN IN</button>
+                    </div>
+                    <div style="text-align: center; padding-top: 5%;" >
+                      <a id="register_btn" onclick="{register_form()}" type="button">Register</a>
+                    </div>
+                    <div class="login-form-elements" >
+                      <a href="/login" id="login_forgot_password">Forgot Password</a>
+                    </div>
+    
+                </div>
+    
+              </form>   
+            </div>
+          
+        </div>
+    
+    
+        <style>
+     
+        </style>
+    
+        <!-- <script>
+          document.getElementById("policy_and_terms_check").style="width: 2%;"
+        </script> -->
+    
+    
+    
+      <!-- SignUp integrations via PoP-UP -->
+      <div class="dev_signup_form">
+    
+        <div id="remove_popup_btn_signup">
+          <b>X</b>
+        </div>
+    
+        <div id="sign_up_left_div">
+    
+    
+            <div id="benefits_of_rys_header" > 
+              <h3 id="">BENEFITS OF USING RENTYOURSTAY.IN</h3>
+            </div>
+            <div id="benefits_of_rys_para">
+              <ul >
+                <li class="line_height" > EVERY 60-DAYS, 3 ADS ARE FREE FOR PROPERTY OWNERS </li>
+                <li class="line_height" > BROKER-FREE PLATFORM SAVES TIME AND MONEY </li>
+                <li class="line_height" > EASY PROPERTY NOTIFICATIONS FOR TENANTS & OWNERS </li>
+                <li class="line_height" > ONE FREE BRANDING FOR EVERY SUBSCRIBTIONS </li>
+                <li class="line_height" > LOW COST PLAN SUBSCRIBTIONS FOR AD POSTING </li>
+    
+              </ul>
+            </div>
+            <div id="">
+              <button id="benefits_of_rys_explore"> EXPLORE NOW </button>
+            </div>
+    
+          
+        </div>
+    
+        <div id="sign_up_rite_div">
+          
+          <form action="" method="post">
+          
+            <div class="signup-form-elements_title">
+              <h3>Register</h3>
+            </div>
+              {% csrf_token %}
+              <div class="signup_form_popup">
+                <input autocomplete="off" type="text" class="sign_up_input" id="first_n" onkeyup="{validate_creds(id,type)}"  name="first_name" placeholder="First Name"required>
+      
+              </div>
+              <div class="signup_form_popup">
+                <input autocomplete="off" type="text" class="sign_up_input" id="last_n" onkeyup="{validate_creds(id,type)}"  name="last_name" placeholder="Last Name" required>
+      
+              </div>
+              <div class="signup_form_popup">
+                <input  type="email" class="sign_up_input" id="email_id"   name="email_id" onkeyup="{validate_creds(id,type)}" placeholder="EMail-ID"required>
+      
+              </div>
+              <div class="signup_form_popup">
+                <input autocomplete="off" onkeyup="{password_validations(id)}" type="password" class="sign_up_input" id="login_password"   name="login_email_password" placeholder="Password" required>
+      
+              </div>
+              <div class="signup_form_popup">
+                <input onkeyup="{password_validations()}" class="sign_up_input" type="text" name="confimr_password" placeholder="Confirm Password" id="confimr_password">
+            </div>
+    
+            <div class="signup_form_popup">
+              <input  type="number" onkeyup="{validate_creds(id,type)}" class="sign_up_input" id="mobile_no"   name="mobile_no" placeholder="Mobile No" required>
+    
+            </div>
+    
+            <div class="terms_and_policy_div">
+    
+              <strong>By continuing, you agree to RentYourStay's <a class="terms_policy_a" href="terms&conditions">Terms of Use</a> and <a class="terms_policy_a" href="privacy-policy">Privacy Policy</a> .</strong>
+    
+            </div>
+    
+    
+            <div class="signup_form_popup">
+              <button type="submit" id="register_submit_btm">SIGN UP</button>
+            </div>
+    
+            <div id="User_exixtance_error" style="display:none; margin-left:4%;width: 60%;background: content-box;border: none;color: red;outline: none; font-weight: 600;">
+              <p style="color:red;">User Already Exist, Please Login !!</p>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <style>
+        /* Login and Signup */
+
+        #login_forgot_password{
+        color: red;
+        text-decoration: none;
+        }
+        #login_form_div input,#sign_up_rite_div input:-webkit-autofill,
+        #login_form_div input,#sign_up_rite_div input:-webkit-autofill:hover,
+        #login_form_div input,#sign_up_rite_div input:-webkit-autofill:focus,
+        #login_form_div input,#sign_up_rite_div input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0px 1000px aliceblue inset !important;
+        }
+        .login_form_input_element{
+  width: 75%;
+  background: content-box;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  border-bottom: 1px solid black;
+
+}
+.div_login-form-elements{
+  width: 0%;
+  display: inline-grid;    
+  background-color: aliceblue;
+  border-radius: 10px;
+  position: relative;
+  height: 100%;
+  overflow: scroll;
+  transition: 1000ms;
+  
+}
+.div_login-form-elements.active{
+
+width: 45%;
+
+}
+#remove_popup_btn_login,#remove_popup_btn_signup{
+  position: absolute;
+  font-size: 15px;
+  right: 0px;
+  cursor: pointer;
+  background-color: red;
+  border-radius: 3px;
+  color: white;
+  width: 8%;
+} 
+
+.login-form-elements{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  
+  /* border: 1px solid blue; */
+}
+
+.login-form-elements_title{
+  text-align: center;
+  margin: 5%;
+  color: black
+
+}
+
+
+.login_popup_div_integration{
+  /* border: 1px solid red; */
+  width: 0%;
+  display: block;
+  /* justify-content: center; */
+  position: fixed;
+  top: 22%;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  
+  }
+.login_popup_div_integration.action{
+  /* top: 22%; */
+  bottom: 22%;
+  /* transition: 1000ms; */
+  width: 100%;
+}
+
+/* signup div */
+
+.dev_signup_form{
+  display: flex;
+  width: 80%;
+  position: fixed;
+  top: -250%;
+  right: 10%;
+  background-color: aliceblue;
+  text-align: center;
+  border-radius: 10px;
+  transition: 1000ms;
+  height: 80%;
+}
+
+.dev_signup_form.action{
+  top: 15%;
+}
+#sign_up_left_div{
+  width: 50%;
+  /* border: 1px solid; */
+  padding-top: 8%;
+  border-radius: 5px;
+  background-color: darkturquoise;
+}
+#sign_up_rite_div{
+  width: 50%;
+
+}
+.signup-form-elements_title{
+  text-align: center;
+    margin: 3%;
+    color: black;
+}
+
+#sign_in_register_forgot_password_div{
+  display: grid;
+  justify-content: space-evenly;
+}
+
+.sign_up_input{
+  width: 70%;
+  background: content-box;
+  border: none;
+  outline: none; 
+  font-weight: 600;
+  border-bottom: 1px solid black;
+}
+
+#sign_in_btn_home{
+  width: 100%; 
+  border-radius: 20p; 
+  font-weight: bold; 
+  outline: none; 
+  border: none; 
+  border-radius: 50px;
+  background-color: royalblue;                
+  color: white;
+}
+
+#remove_popup_btn_login,#remove_popup_btn_signup{
+    position: absolute;
+    font-size: 15px;
+    right: 0px;
+    cursor: pointer;
+    background-color: red;
+    border-radius: 3px;
+    color: white;
+    width: 8%;
+} 
+.signup_form_popup{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+
+  
+  
+}
+    </style>
+      
+    
+    
+    
+    
+      
+    
+      
+          <script>
+              function password_validations(){
+              var new_password=document.getElementById("login_password").value
+              var confimr_password=document.getElementById("confimr_password").value
+    
+              if(new_password.toString() != confimr_password.toString()){ 
+                  console.log(" enter ",new_password)
+                  console.log(" ed ",confimr_password)
+                  document.getElementById("confimr_password").style="outline:3px solid red"
+                  submit=document.getElementById("register_submit_btm")
+                  submit.disabled="disabled"
+                  submit.style="background-color:#616161;cursor: not-allowed;"
+              }else{
+                  document.getElementById("confimr_password").style=""
+                  submit=document.getElementById("register_submit_btm")
+                  submit.disabled=""
+                  submit.style=""
+    
+              }
+           }
+    
+          </script>
+
+<script>
+    function validate(content,format){
+               var content_format= new Object()
+               content_format= {
+                   "text":"^[a-zA-Z]+$",
+                   "number":"^[6-9]{1}[0-9]{9}$",
+                   "email":"[a-zA-Z0-9\-\.]+[@][a-zA-Z]+[\.][a-zA-Z]{2,3}",      
+  
+               }
+  
+               re=new RegExp(content_format[format])
+               
+               result=re.test(content)
+  
+               return result
+  
+  
+               console.log("Result : ",result)
+               
+  
+           }
+           
+  
+           function validate_creds(id,type){
+               var check=document.getElementById(id).value
+               result=validate(check,type)
+               console.log("op",result)
+               if (check){
+                       if (result){
+                           document.getElementById(id).style=""
+  
+                           
+                       }else{
+                           document.getElementById(id).style="outline:3px solid red"
+                         
+                           
+                       }
+               }
+               console.log("check : ",check)
+         
+               id1=document.getElementById("first_n").style.outlineColor
+               id2=document.getElementById("last_n").style.outlineColor
+               id3=document.getElementById("mobile_no").style.outlineColor
+               id4=document.getElementById("email_id").style.outlineColor
+               id5=document.getElementById("confimr_password").style.outlineColor
+  
+  
+               console.log("id3 :  ",id3,)
+  
+               if (id1||id2||id3||id4||id5){
+                console.log("id3  inner:  ",id3)
+               submit=document.getElementById("register_submit_btm")
+               submit.disabled="disabled"
+               submit.style="background-color:#616161;cursor: not-allowed;"
+               }else{
+               submit=document.getElementById("register_submit_btm")
+               submit.disabled=""
+               submit.style=""
+               }
+  
+           }
+
+
+
+
+
+function login_popup(){
+  // if ('True' =='True'){
+  document.querySelector(".login_popup_div_integration").classList.add('action');
+//   document.getElementById("main_div_homepage").style="opacity: 10%; pointer-events: none;";
+  document.body.style="overflow:hidden;"
+//   document.getElementById("homepage_main_banner_image_div").style="background-color:white"
+//   document.getElementById("homepage_main_banner_image").style="opacity: 10%; pointer-events: none;"
+  document.getElementById("email_validate").style="display:none;";
+  document.querySelector(".div_login-form-elements").classList.add("active")
+
+
+
+};
+
+
+document.querySelector("#remove_popup_btn_login").addEventListener("click",function(){
+//   document.getElementById("homepage_main_banner_image_div").style=""
+  document.querySelector(".div_login-form-elements").classList.remove("active")
+  document.querySelector(".dev_signup_form").classList.remove('action');
+//   document.getElementById("homepage_main_banner_image").style=""
+  document.body.style=""
+//   document.getElementById("main_div_homepage").style="";
+
+  console.log("outer_test")
+
+  function sometime_limit() {
+    document.querySelector(".login_popup_div_integration").classList.remove('action');
+    console.log("clicked sometime_limt")
+
+  }
+
+window.setTimeout(sometime_limit,1000)
+
+
+});
+
+
+document.querySelector("#remove_popup_btn_signup").addEventListener("click",function(){
+  document.querySelector(".login_popup_div_integration").classList.remove('action');
+  
+  document.body.style=""
+  document.getElementById("homepage_main_banner_image").style=""
+  document.querySelector(".dev_signup_form").classList.remove('action');
+  document.getElementById("main_div_homepage").style="";
+  document.querySelector(".div_login-form-elements").classList.remove("active")
+
+
+
+
+})
+
+  </script>
+
+
+
+        <style>
+            /* Main pg Loader */
+
+            /* dicount strike out */
+
+            .Offer_b9832847{
+            font-size: 8px;
+            font-weight: 900;
+            color: red;
+            position: absolute;
+            left: 5%;
+            top : 24px;
+                        
+            }
+            .container_pre_tag{
+                position: relative;
+            }
+            .container_pre_tag em{   
+                position: absolute;
+                right: 4%;
+                top: 15%;
+                font-size: small;}
+
+            /* ===================== */
+            #Pg_loader1{
+            height: 100vh;
+            background-color: red;
+            position: fixed;
+            top: 0%;
+            width: 50%;
+            transition :700ms;
+            z-index: 2;
+            }
+
+            #Pg_loader2{
+            height: 100vh;
+            background-color: red;
+            position: fixed;
+            top: 0%;
+            right: 0%;
+            width: 50%;
+            transition :700ms;
+            z-index: 2;
+            }
+
+            #pg_sub1{
+                display: flex;
+                justify-content: end;
+
+            }
+            #pg_sub2{
+                display: flex;
+                justify-content: start;
+
+            }
+
+            #Pg_l2324433,#Pg_l2324431,#Pg_l2324432{
+                background-color: white;
+                width: 15px;
+                height: 15px;
+                top: 50%;
+                right: 0%;
+                margin-top: 45%;
+                margin-right: 2%;
+                box-sizing: border-box;
+
+            }
+
+            #Pg_l2324433{
+            margin-right: 1%;
+            }
+
+            #Pg_l2324434,#Pg_l2324435,#Pg_l2324436{
+                background-color: white;
+                width: 15px;
+                height: 15px;
+                top: 50%;
+                left: 0%;
+                margin-top: 45%;
+                margin-left: 2%;
+                box-sizing: border-box;
+            }
+            #Pg_l2324434{
+            margin-left: 1%;
+            }
+            
+            /* ========================== */
+            .m0_4204_re{
+                text-align: end;
+                margin-right: 20px;
+                cursor: pointer;
+            }
+
+            .m0_4204_re a{
+                text-decoration: none;
+                color: black;
+                font-size: 20px;
+            }
+
+            .header_4938492sjaxhb{
+                font-size: 20px;
+                text-align: center;
+            }
+            ::-webkit-scrollbar {
+                display: none;
+                scroll-behavior: smooth;
+            }
+
+            .main_sub_div_0621312{
+                display: flex;
+                overflow: scroll;
+
+            }
+            .main_sub_div{
+                border: 2px solid black;
+                margin-bottom: 2%;
+                margin-right: 2%;
+                /* background-color: white; */
+               
+
+            }
+            .homepg_comparing_div {
+                position: absolute;
+                top: 0px;
+                left: 0px;
+                background: white;
+                border: 0.1px solid gray;
+                padding-left: 5px;
+            }
+
+            .home_pg_product_container button {
+                border: none;
+                border-radius: 5px;
+                height: 30px;
+                width: 90%;
+                background-color: royalblue;
+                color: white;
+
+
+            }
+
+            .home_pg_product_container {
+                width: 300px;
+                border: 1px solid black;
+                border-radius: 5px;
+                margin: 1%;
+                display: inline-block;
+                position: none;
+                background-color: white;
+                flex-shrink: 0;
+
+            }
+
+            #img_container {
+                text-align: center;
+            }
+
+
+            .home_page_product_img {
+                width: 70%;
+                height: 10em;
+                /* border: 1px solid red; */
+
+            }
+
+            #main_div_homepg {
+                /* border: 1px solid red; */
+                padding-left: 2%;
+
+            }
+            body{
+                /* background-image: linear-gradient(180deg,#e6faff,#fff,#d9d9d9); */
+                margin: 0px;
+                font-family: 'Roboto', sans-serif;
+            }
+        </style>
+
+        <script>
+            function suggest_fun_on(id) {
+
+                document.getElementById(id).style = "position: relative;"
+                // document.getElementById("homepg_comparing_div").style="display:;";
+            }
+
+            function suggest_fun_off() {
+                // document.getElementById("homepg_comparing_div").style="display:none;"
+                temp1 = document.querySelectorAll(".home_pg_product_container")
+                console.log("length : ", temp1.length)
+                for (let a = 0; a < temp1.length; a++) {
+                    document.getElementsByClassName("home_pg_product_container")[a].style = ""
+                }
+
+            }
+
+            // function open_google_map(){
+            //     String uri = "http://maps.google.com/maps?saddr=" + sourceLatitude + "," + sourceLongitude + "&daddr=" + destinationLatitude + "," + destinationLongitude;
+            //     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(uri));
+            //     startActivity(intent);
+            // }
+
+
+        </script>
+
+
+        <div>
+            <form action="" method="get" id="fetch_local_items_by_BE">
+                
+            </form>
+        </div>
+
+        <script>
+            var screen_width=window.innerWidth
+
+            var lat
+            var lon
+            var get_pincode
+            var village
+            var state_district_by_coordinate
+            var user_current_state_via_coordinates
+            var cities_len
+            
+            
+            function call_redirection(id) {
+           
+                window.open(`${id}` + "?" + "village=" + "{{user_current_loc|safe}}" + "&district=" + "{{user_district|safe}}" + "&State=" + "{{user_state|safe}}")
+            }
+
+
+
+            var list_of_cities=[]
+
+            function open_call(phoneno){
+                            var call="tel:+91"+`${phoneno}`
+                            window.open(call)
+                        }
+           
+            function  success(a) {
+            lat=a.coords.latitude
+            lon=a.coords.longitude
+
+            // lat=13.199586
+            // lon=78.910184
+
+            //  lat=8.099008
+            // lon=77.545131
+
+            // // karnataka
+            // lat=13.130644
+            // lon=77.571970
+
+            url=`https://geocode.maps.co/reverse?lat=${lat}&lon=${lon}`
+            // url=https://geocode.maps.co/reverse?lat=8.099008&lon=77.545131
+
+
+            fetch(url,{
+                method : "GET",
+
+            }).then(response => {return response.json();}).then(data => {console.log(data)
+                console.log(data.address.postcode)
+                get_pincode=data.address.postcode
+                console.log(data.address.state_district)
+                console.log(data.address.village)
+                console.log(data)
+                village=data.address.village
+                state_district_by_coordinate=data.address.state_district
+                user_current_state_via_coordinates=data.address.state
+
+  
+               
+
+                fetch(`https://api.postalpincode.in/pincode/${get_pincode}`,{
+                method:"GET",
+                }).then( res =>{
+                    return res.json()
+                }).then(data => {
+
+                console.log("data : ",data)
+
+                try{
+                cities_len=data[0].PostOffice.length
+                }catch{
+
+                }
+
+                if (cities_len){
+                for(var cnt=0;cnt<cities_len;cnt++){
+
+                    list_of_cities[cnt]=data[0].PostOffice[cnt].Name
+                }
+            }
+
+                list_of_cities[cities_len]=state_district_by_coordinate
+
+
+                console.log("list_of_cities : ",list_of_cities)
+                cre_textarea_child=document.createElement("textarea")
+                cre_textarea_child.value=list_of_cities
+                cre_textarea_child.name="local_cities"
+                cre_textarea_child.hidden=true
+                form_to_send_be=document.getElementById("fetch_local_items_by_BE")
+                form_to_send_be.appendChild(cre_textarea_child)
+
+                // current location and coordinates to BE
+                cre_inpt_location=document.createElement("input")
+                cre_inpt_location.value=village
+                cre_inpt_location.name="user_current_location"
+                cre_inpt_location.hidden=true
+
+                cre_inpt_location_district=document.createElement("input")
+                cre_inpt_location_district.value=state_district_by_coordinate
+                cre_inpt_location_district.name="user_current_location_district"
+                cre_inpt_location_district.hidden=true
+
+                cre_inpt_coordinates=document.createElement("textarea")
+                cre_inpt_coordinates.value="lat : "+ lat + "," +"lon : "+lon 
+                cre_inpt_coordinates.name="user_current_coordinates"
+                cre_inpt_coordinates.hidden=true
+
+                user_loc_state=document.createElement("input")
+                user_loc_state.value=user_current_state_via_coordinates
+                user_loc_state.name="user_current_state_via_coordinates"
+                user_loc_state.hidden=true
+
+                form_to_send_be.appendChild(cre_inpt_location)
+                form_to_send_be.appendChild(cre_inpt_coordinates)
+                form_to_send_be.appendChild(cre_inpt_location_district)
+                form_to_send_be.appendChild(user_loc_state)
+
+                form_to_send_be.submit()
+
+            //     be_url="/ecomm111111/38108042840kajsnkackja/"
+            //     // be_url="/ecomm/"
+
+            //     const csrfToken = document.cookie
+            //     // console.log("csrf", csrfToken)
+
+            //     temppp=csrfToken.split(";")[0] 
+            //     csrftoken=temppp.split("=")[1] 
+            //     // console.log("ssasa",csrftoken)
+            //     const headers = new Headers({
+            //         'Accept': 'application/json',
+            //         'Content-Type': 'application/json; charset=UTF-8',
+            //         'X-CSRFToken': csrftoken
+            //     });
+
+            //     // var state_district_by_coordinate="temp"
+            //     console.log("user_state : ",user_current_state_via_coordinates)
+            //     var payload1=new FormData()
+            //     payload1.append('local_cities',list_of_cities)
+            //     payload1.append('user_current_location',village)
+            //     payload1.append('user_current_location_district',state_district_by_coordinate)
+            //     payload1.append('user_current_coordinates',"lat: "+ lat + "," +"lon : "+lon)
+            //     payload1.append('user_current_state_via_coordintes',user_current_state_via_coordinates)
+            //     payload1.append('user_status',"{{user_status}}")
+
+            //     fetch(be_url,{
+            //         method : "POST",
+            //         // headers,
+            //         body:payload1
+            //     }).then(e=>{
+            //         return (e.json())
+            //     }).then(data =>{
+            //         console.log("Response : ",data.home_category)
+
+                    
+            //     })
+
+                    
+            })
+            });
+
+            }
+            function error(b) {
+
+                window.setTimeout(run_after_load2,1000)
+                function run_after_load2(){
+                document.getElementById("pg_sub2").style="display:none"
+                document.getElementById("pg_sub1").style="display:none"
+                document.getElementById("Pg_loader2").style="width:0px;"
+                document.getElementById("Pg_loader1").style="width:0px;"
+
+                clearInterval(loop_tigger1213)
+                document.body.style=""
+
+                }
+
+            alert("Please Enable Geolocation")
+            // navigator.geolocation.getCurrentPosition(success,error,{
+            // enableHighAccuracy: true})                                 
+            }
+
+            async function get_user_current_loc(){
+            navigator.geolocation.getCurrentPosition(success,error,{
+            enableHighAccuracy: true})
+            }
+            
+
+
+           
+
+            function open_gmap(store,city,state,pincode){
+                var assign_data=[]
+                var ref_check=[" "]
+                check_data=[store,city,state]
+
+                for(let ck=0;ck<check_data.length;ck++){
+                if (check_data[ck].includes(ref_check)){
+                    
+                    replace_data=check_data[ck].replace(" ","+")
+
+                    assign_data[ck]=replace_data
+
+                }else{
+                    // console.log("No Space b/w", check_data[ck])
+                    
+                    assign_data[ck]=check_data[ck]
+                    
+                }
+                }
+            var url = `https://www.google.com/maps/place/${assign_data[0]},+${assign_data[1]},+${assign_data[2]},+${pincode}`;
+            var inAppBrowser = window.open(url, '_blank', 'location=yes'); 
+            }
+            // window.location = 'comgooglemaps://?center=40.765819,-73.975866&zoom=14&views=traffic'
+            // window.location = 'geo:40.765819,-73.975866'
+            
+            </script> 
+
+
+            
+
+    </div>
+
+      <!-- Main pg Loader -->
+
+      <div id="Pg_loader1">
+        <div id="pg_sub1">
+            <div id="Pg_l2324431"></div>
+            <div id="Pg_l2324432"></div>
+            <div id="Pg_l2324433"></div>
+        </div>
+
+    </div>
+    <div id="Pg_loader2">
+        <div id="pg_sub2">
+            <div id="Pg_l2324434"></div>
+            <div id="Pg_l2324435"></div>
+            <div id="Pg_l2324436"></div>
+        </div>
+    </div>
+
+    <script>
+
+    // padding: 1px 1px;
+    // margin-top: 318.7px;
+      
+
+        var get_url_ = window.location.search
+        var get_url_State_params=new URLSearchParams(get_url_).get("user_current_state_via_coordinates")
+    
+        // while (get_url_State_params){
+
+        //     console.log("get_url_State_params : ",get_url_State_params)
+        // }
+
+        console.log("get_url_State_params _ ended  : ",get_url_State_params)
+
+
+    </script>
+
+                
+{% if user_current_loc %}
+
+<script>
+    window.setTimeout(run_after_load1,1000)
+    function run_after_load1(){
+    document.getElementById("pg_sub2").style="display:none"
+    document.getElementById("pg_sub1").style="display:none"
+    document.getElementById("Pg_loader2").style="width:0px;"
+    document.getElementById("Pg_loader1").style="width:0px;"
+
+    clearInterval(loop_tigger1213)
+    document.body.style=""
+
+    }
+</script>
+
+{% elif user_district  %}
+
+<script>
+    window.setTimeout(run_after_load2,1000)
+    function run_after_load2(){
+    document.getElementById("pg_sub2").style="display:none"
+    document.getElementById("pg_sub1").style="display:none"
+    document.getElementById("Pg_loader2").style="width:0px;"
+    document.getElementById("Pg_loader1").style="width:0px;"
+
+    clearInterval(loop_tigger1213)
+    document.body.style=""
+    
+
+}
+</script>
+
+{% else %}
+<script>
+    get_user_current_loc()
+</script>
+{% endif %}
+
+<script>
+    document.body.style="overflow: hidden;"
+    var count = 1
+    var count_plus=0
+    const loop_tigger1213 = window.setInterval(loop_for_load,100)
+    function loop_for_load(){
+    console.log("count : ",count)
+    document.getElementById("Pg_l232443" + `${count}`).style="background-color:green;";
+    window.setTimeout(inner_fun,50)
+    function inner_fun(){
+        document.getElementById("Pg_l232443" + `${count-1}`).style="";
+        if (count==7){  
+        count_plus=count_plus+1
+        count=1
+        console.log(count_plus)
+    }
+    if (count_plus == 10){
+        clearInterval(loop_tigger1213)
+        document.getElementById("pg_sub2").style="display:none"
+        document.getElementById("pg_sub1").style="display:none"
+        document.getElementById("Pg_loader2").style="width:0px;"
+        document.getElementById("Pg_loader1").style="width:0px;"
+        document.body.style=""
+    }
+    }
+    count = count + 1
+ 
+
+  
+    }
+
+
+</script>
+</body>
+
+</html>

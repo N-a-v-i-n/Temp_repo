@@ -1,0 +1,1093 @@
+<div id="ma9489384disdn">
+
+
+    <div id="filter_div">
+        <form action="" method="GET">
+
+       
+        <div id="in434354">
+            <h3>FILTERS</h3><hr>
+
+            <div>
+                <input type="radio" name="filter_active" checked hidden>
+            </div>
+
+            <div><p>State</p>
+                <div id="pri2493948">
+
+                        <select name="State" id="state_selection">
+                            <option value="">State</option>
+                        </select>
+                    
+                </div><hr>
+            </div>
+
+            <div id="C82674791ity" hidden><p>City</p>
+                <div id="pri2493948">
+                    <form action="">
+                        <select name="city_selection" id="city_selection">
+
+
+                        </select>
+                    </form>
+                </div><hr>
+            </div>
+
+            <!-- <div><p>Prices</p>
+
+                <div id="pri2493948">
+                    <form action="">
+                        <div><input type="radio" id="High To Low" name="price_radio_btn"> &nbsp; High To Low</div>
+                        <div><input type="radio" id="Low To High" name="price_radio_btn"> &nbsp; Low To High</div>
+                        <div class="radio_filter_class" onclick="{radio_btn_clicking('other_price',id)}" id="radio_other_btn">
+                            <div><input type="number" placeholder="Min"><input type="number" placeholder="Max"></div>
+                        </div>
+
+                    </form>
+                </div><hr>
+            </div> -->
+            <div><p>Prices</p>
+                <div class="radio_filter_class" onclick="{radio_btn_clicking('input_low_to_high',id)}" id="radio_low_to_high">
+                    <table>
+                    <tr>
+                        <th>
+                        <p>Low to High</p>
+                        </th>
+                        <th>
+                        <input class="input_filter_class" onclick="{other_price_clicked(value)}" type="radio" value="0" name="max_min_radio" id="input_low_to_high" >
+                        </th>
+                        
+                    </tr>
+                    </table>
+                    
+                    
+                </div>
+                <div class="radio_filter_class" onclick="{radio_btn_clicking('input_high_to_low',id)}" id="radio_high_to_low">
+            
+                    <table>
+                    <tr>
+                        <th>
+                        <p>High to Low</p>
+                        </th>
+            
+                        <th>
+                        <input onclick="{other_price_clicked(value)}" type="radio" value="1" name="max_min_radio" id="input_high_to_low" >
+                        </th>
+                    
+                    </tr>
+            
+                    </table>
+                    
+            
+                </div>
+
+                <div class="radio_filter_class" onclick="{radio_btn_clicking('other_price',id)}" id="radio_other_btn">
+
+                    <table>
+                      <tr>
+                        <th>
+                          <p>Other Price</p>
+                        </th>
+              
+                        <th>
+                          <input type="radio" onclick="{other_price_clicked(value)}" value="Others" name="max_min_radio" id="other_price" >
+                        </th>
+                   
+                      </tr>
+              
+                    </table>
+              
+                  </div>
+
+                  
+                    <div class="filter_form_element" id="other_price_click" style="display: none;">
+
+                        <table>
+                        <tr>
+                            <th>
+                            <input class="select_class" type="number" placeholder="Min Range" name="Min_Range" id="Min_Range"  >
+                            </th>
+                        </tr>
+                        </table>
+                
+                        <table>
+                        <tr>
+                            <th>
+                            <input class="select_class" type="number" placeholder="Max Range" name="Max_Range" id="Max_Range"  >
+                            </th>
+                
+                        </tr>
+                        </table>
+                
+                    </div>
+            </div><hr>
+
+
+            <div><p>Categories</p>
+
+                <!-- <div id="subc2894782">
+                    <form action="">
+                         for x in fetch_sub_category 
+                        <div><input type="radio" name="sub_category_radio">{{x}}</div>
+                        endfor 
+                    </form>
+                </div><hr> -->
+              
+                <div id="sub9273492743">
+
+                
+
+                        {% for x in fetch_sub_category %}
+
+                        <div class="radio_filter_class" id="424/42/42{{x}}/2442+"  onclick="{checked_up('{{x}}')}">
+
+                            <table>
+                            <tr>
+                                <th>
+                                <p>{{x}}</p>
+                                </th>
+                    
+                                <th>
+                                <input type="checkbox"  name="{{x}}" onclick="{change_bg_cl('424/42/42{{x}}/2442+',id)}"  id="{{x}}" >
+                                </th>
+                        
+                            </tr>
+                    
+                            </table>
+                    
+                        </div>
+
+                        {% endfor %}
+                </div>
+            </div><hr>
+            
+            <div><p>Brands</p>
+                <!-- <div id="bra9238923">
+                    <form action="">
+                        for x in brand_names 
+                        <div><input type="radio" name="sub_category_radio">{{x}}</div>
+                         endfor
+                    </form>
+                </div><hr> -->
+
+                {% for x in brand_names %}
+
+                <div class="radio_filter_class" id="/#/332{{x}}+/#/#" onclick="{checked_up('{{x}}')}" id="radio_other_btn">
+
+                    <table>
+                    <tr>
+                        <th>
+                        <p>{{x}}</p>
+                        </th>
+            
+                        <th>
+                        <input type="checkbox" name="{{x}}" onclick="{change_bg_cl('/#/332{{x}}+/#/#',id)}"  name="{{x}}" id="{{x}}" >
+                        </th>
+                
+                    </tr>
+            
+                    </table>
+            
+                </div>
+
+                {% endfor %}
+
+            </div><hr>
+            
+            <div id="sajhb09827">
+                <button type="submit">Filter</button>
+                &nbsp; 
+                &nbsp;
+                <button type="reset" onclick='{ 
+                    data=document.querySelectorAll(".radio_filter_class")
+                    for(let a=0;a<data.length;a++){
+                        data[a].style=""
+                    
+
+                }}'>Reset</button>
+            </div>
+            
+            <script>
+               
+            </script>
+
+
+        </div>
+
+        </form>
+    </div>
+
+<hr>
+
+    <div id="product_div">
+
+
+
+        <div class="header_4938492sjaxhb">
+        
+            <h2 id="header_name"></h2>
+
+            <script>
+                request_url=window.location.href.split("ecomm/")
+                get_header_from_url = (request_url[1].split("/")).splice(0,1)
+                document.getElementById("header_name").innerHTML=get_header_from_url[0].replace("%20"," ")
+            </script>
+        </div>
+        <div class="main_sub_div_0621312">  
+
+            {% for x in get_all_state_category %}
+            <div class="home_pg_product_container" id=Home_Container">
+
+                <div id="img_container">
+                    
+                        <img class="home_page_product_img" {% if x.Product_image %} src="/static/media/{{x.Product_image}}" {% else %} src="/static/no_data_image.jpg" {% endif  %} alt="">
+                    
+                </div>
+                <div>
+                    <pre>  <b>{{x.product_name}}</b></pre>
+                </div>
+                <div> 
+                    <pre>  ₹ {{x.selling_price_per_item}} /peice            On-Minimum {{x.min_items}}</pre>
+                </div>
+                <div>
+                    <pre>  {{x.selling_state}}, {{x.selling_city}}</pre>
+                </div>
+                <div>
+                    <pre>  Retailer <b>{{x.retailer_name}}</b></pre>
+                </div>
+                <div>
+                    <pre>  Brand <b>{{x.brand_name}}</b></pre>
+                </div>
+                <div>
+                    
+                    <pre>  <a ><button {% if user_status %}  onclick="open_call('{{x.seller_contact_no}}')" {% else %} onclick="{login_popup()}" {% endif %}  class="btn">CALL NOW</button></a></pre>
+                    <pre>  <a ><button {% if user_status %}  onclick="open_gmap('{{x.retailer_name}}','{{x.selling_city}}','{{x.selling_state}}','{{x.selling_pincode}}')" {% else %} onclick="{login_popup()}" {% endif %} class="btn">VIEW MAP</button></a></pre>
+
+                </div>
+
+                <!-- whatsapp://send?text=https://www.rentyourstay.com/product/{{x.4}}/ -->
+
+            
+
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+   
+</div>
+
+
+        <!-- no data pop-up -->
+
+        <div id="not_f48793801">
+            <div id="n913898429380">
+            
+                No Data Found
+        
+            </div>
+        </div>
+
+        <script>
+          var check_if_no_data="{{data_not_found|safe}}"
+          if (check_if_no_data != "False"){
+            console.log("check_if_no_data : ",check_if_no_data)
+            document.getElementById("not_f48793801").style="top: 0%;"
+            window.setTimeout(disable_pop_up,3000)
+            
+          }
+          function disable_pop_up(){
+            document.getElementById("not_f48793801").style=""
+          }
+        </script>
+
+<style>
+    /* not_found_pop_up */
+    #n913898429380{
+        background-color: red;
+        width: 20%;
+        color: white;
+        border-radius: 10px 0px;
+        text-align: center;
+        padding: 2% 0%;
+        font-size: x-large;
+        
+    }
+
+    #not_f48793801{
+        position: fixed;
+    width: 100%;
+    top: -200%;
+    left: 80%;
+    transition: 1500ms;
+
+    }
+
+
+    /* ======================= */
+    #sub9273492743{
+            height: 300px;
+            overflow: scroll;
+            }
+
+    input[type="checkbox" i]{
+                        display: none;
+                    }
+    #state_selection,#city_selection{
+        width: 100%;
+            height: 5%;
+            border-radius: 5px;
+            text-align: center;
+            font-size: medium;
+            outline: none;
+            cursor: pointer;
+    }
+    .radio_filter_class th{
+        font-weight: normal;
+    }
+    /* ============================== */
+    .radio_filter_class{
+    position: relative;
+    border: 1px solid gray;
+    display: inline-flex;
+    width: 99.1%;
+    justify-content: center;
+    margin-bottom: 3%;
+    border-radius: 5px;
+    cursor: pointer;
+    }
+    .radio_filter_class p{
+        padding: 5px;
+    }
+    #Min_Range,#Max_Range{
+    height: 35px;
+    }
+
+    input[type="radio" i]{
+    display: none;
+    } 
+    /* ------------------- */
+    body{
+        margin: 0% 0% 2% 0%;
+        padding: 0px;
+        /* border: 1px solid blue; */
+        /* background-image:url("/static/ecomm_pics/category_pg/bg-body.jpg"); */
+        /* background-image: linear-gradient(to right,red,blue); */
+        background-image: linear-gradient(180deg,#e6faff,#fff,#d9d9d9);
+    }
+    
+    #ma9489384disdn{
+        display: flex;
+       
+        /* border: 1px solid blue; */
+    }
+    #filter_div{
+        width: 25%;
+        /* border: 1px solid red; */
+        
+
+    }
+    #product_div{
+        width: 75%;
+        /* border: 1px solid greenyellow; */
+    }
+/* ------------------------- */
+/* #subc2894782{
+    height: 200px;
+    overflow: scroll;
+    scroll-behavior: smooth;
+} */
+#in434354{
+    margin: 0% 10%;
+}
+    .m0_4204_re{
+        text-align: end;
+        margin-right: 20px;
+    }
+
+    .m0_4204_re a{
+        text-decoration: none;
+        color: black;
+        font-size: 20px;
+    }
+
+    .header_4938492sjaxhb{
+        font-size: 20px;
+        text-align: center;
+    }
+    ::-webkit-scrollbar {
+        display: none;
+        scroll-behavior: smooth;
+    }
+
+    .main_sub_div_0621312{
+        display: list-item;
+        overflow: scroll;
+        margin-left: 4.5%;
+    }
+    .main_sub_div{
+        border: 2px solid black;
+        margin-bottom: 2%;
+        margin-right: 2%;
+        background-color: white;
+       
+
+    }
+    .homepg_comparing_div {
+        position: absolute;
+        top: 0px;
+        left: 0px;
+        background: white;
+        border: 0.1px solid gray;
+        padding-left: 5px;
+    }
+
+    .home_pg_product_container button {
+        border: none;
+        border-radius: 5px;
+        height: 30px;
+        width: 90%;
+        background-color: royalblue;
+        color: white;
+
+
+    }
+
+    .home_pg_product_container {
+        width: 300px;
+        border: 1px solid black;
+        border-radius: 5px;
+        margin: 1%;
+        display: inline-block;
+        position: none;
+        background-color: white;
+    }
+
+    #img_container {
+        text-align: center;
+    }
+
+
+    .home_page_product_img {
+        width: 70%;
+        height: 10em;
+        /* border: 1px solid red; */
+
+    }
+
+    #main_div_homepg {
+        /* border: 1px solid red; */
+        padding-left: 2%;
+
+    }
+    #sajhb09827{
+        text-align: center;
+    }
+    #sajhb09827 button{
+        width: 40% ;
+        border: none;
+        height: 35px;
+        background-color: royalblue;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+</style>
+
+
+
+        <!-- Login PopUp Integrations -->
+        <div class="login_popup_div_integration">
+
+
+            <div class="div_login-form-elements" id="login_form_div">
+          
+              <form  method="post" >
+                {% csrf_token %}
+                <div id="remove_popup_btn_login">
+                  <!-- &#10062; -->
+                  <b>X</b>
+                </div>
+                <div class="login-form-elements_title">
+                  <h3>Login</h3>
+                </div>
+                <div class="login-form-elements">
+                  <input type="email" id="login_email_id" name="login_email_id" class="login_form_input_element"  placeholder="Email" required >
+                </div>
+                <div class="login-form-elements">
+                  <input type="password" id="login_email_password" class="login_form_input_element" name="login_email_password" placeholder="Password" required>
+                </div>
+    
+                <div id="email_validate" style="margin-left:5%;width: 60%;border: none;outline: none; font-weight: 600;">
+                  <p style=" color: red;">Email or Password is Wrong, Please Register !!</p>
+                </div>
+    
+    
+    
+                <div id="sign_in_register_forgot_password_div">
+    
+                
+                    <div class="login-form-elements">
+                      <button type="submit" id="sign_in_btn_home">SIGN IN</button>
+                    </div>
+                    <div style="text-align: center; padding-top: 5%;" >
+                      <a id="register_btn" onclick="{register_form()}" type="button">Register</a>
+                    </div>
+                    <div class="login-form-elements" >
+                      <a href="/login" id="login_forgot_password">Forgot Password</a>
+                    </div>
+    
+                </div>
+    
+              </form>   
+            </div>
+          
+        </div>
+    
+    
+        <style>
+     
+        </style>
+    
+        <!-- <script>
+          document.getElementById("policy_and_terms_check").style="width: 2%;"
+        </script> -->
+    
+    
+    
+      <!-- SignUp integrations via PoP-UP -->
+      <div class="dev_signup_form">
+    
+        <div id="remove_popup_btn_signup">
+          <b>X</b>
+        </div>
+    
+        <div id="sign_up_left_div">
+    
+    
+            <div id="benefits_of_rys_header" > 
+              <h3 id="">BENEFITS OF USING RENTYOURSTAY.IN</h3>
+            </div>
+            <div id="benefits_of_rys_para">
+              <ul >
+                <li class="line_height" > EVERY 60-DAYS, 3 ADS ARE FREE FOR PROPERTY OWNERS </li>
+                <li class="line_height" > BROKER-FREE PLATFORM SAVES TIME AND MONEY </li>
+                <li class="line_height" > EASY PROPERTY NOTIFICATIONS FOR TENANTS & OWNERS </li>
+                <li class="line_height" > ONE FREE BRANDING FOR EVERY SUBSCRIBTIONS </li>
+                <li class="line_height" > LOW COST PLAN SUBSCRIBTIONS FOR AD POSTING </li>
+    
+              </ul>
+            </div>
+            <div id="">
+              <button id="benefits_of_rys_explore"> EXPLORE NOW </button>
+            </div>
+    
+          
+        </div>
+    
+        <div id="sign_up_rite_div">
+          
+          <form action="" method="post">
+          
+            <div class="signup-form-elements_title">
+              <h3>Register</h3>
+            </div>
+              {% csrf_token %}
+              <div class="signup_form_popup">
+                <input autocomplete="off" type="text" class="sign_up_input" id="first_n" onkeyup="{validate_creds(id,type)}"  name="first_name" placeholder="First Name"required>
+      
+              </div>
+              <div class="signup_form_popup">
+                <input autocomplete="off" type="text" class="sign_up_input" id="last_n" onkeyup="{validate_creds(id,type)}"  name="last_name" placeholder="Last Name" required>
+      
+              </div>
+              <div class="signup_form_popup">
+                <input  type="email" class="sign_up_input" id="email_id"   name="email_id" onkeyup="{validate_creds(id,type)}" placeholder="EMail-ID"required>
+      
+              </div>
+              <div class="signup_form_popup">
+                <input autocomplete="off" onkeyup="{password_validations(id)}" type="password" class="sign_up_input" id="login_password"   name="login_email_password" placeholder="Password" required>
+      
+              </div>
+              <div class="signup_form_popup">
+                <input onkeyup="{password_validations()}" class="sign_up_input" type="text" name="confimr_password" placeholder="Confirm Password" id="confimr_password">
+            </div>
+    
+            <div class="signup_form_popup">
+              <input  type="number" onkeyup="{validate_creds(id,type)}" class="sign_up_input" id="mobile_no"   name="mobile_no" placeholder="Mobile No" required>
+    
+            </div>
+    
+            <div class="terms_and_policy_div">
+    
+              <strong>By continuing, you agree to RentYourStay's <a class="terms_policy_a" href="terms&conditions">Terms of Use</a> and <a class="terms_policy_a" href="privacy-policy">Privacy Policy</a> .</strong>
+    
+            </div>
+    
+    
+            <div class="signup_form_popup">
+              <button type="submit" id="register_submit_btm">SIGN UP</button>
+            </div>
+    
+            <div id="User_exixtance_error" style="display:none; margin-left:4%;width: 60%;background: content-box;border: none;color: red;outline: none; font-weight: 600;">
+              <p style="color:red;">User Already Exist, Please Login !!</p>
+           </div>
+        </form>
+      </div>
+    </div>
+
+    <style>
+        /* Login and Signup */
+
+        #login_forgot_password{
+        color: red;
+        text-decoration: none;
+        }
+        #login_form_div input,#sign_up_rite_div input:-webkit-autofill,
+        #login_form_div input,#sign_up_rite_div input:-webkit-autofill:hover,
+        #login_form_div input,#sign_up_rite_div input:-webkit-autofill:focus,
+        #login_form_div input,#sign_up_rite_div input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0px 1000px aliceblue inset !important;
+        }
+        .login_form_input_element{
+  width: 75%;
+  background: content-box;
+  border: none;
+  outline: none;
+  font-weight: 600;
+  border-bottom: 1px solid black;
+
+}
+.div_login-form-elements{
+  width: 0%;
+  display: inline-grid;    
+  background-color: aliceblue;
+  border-radius: 10px;
+  position: relative;
+  height: 100%;
+  overflow: scroll;
+  transition: 1000ms;
+  
+}
+.div_login-form-elements.active{
+
+width: 45%;
+
+}
+#remove_popup_btn_login,#remove_popup_btn_signup{
+  position: absolute;
+  font-size: 15px;
+  right: 0px;
+  cursor: pointer;
+  background-color: red;
+  border-radius: 3px;
+  color: white;
+  width: 8%;
+} 
+
+.login-form-elements{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  
+  /* border: 1px solid blue; */
+}
+
+.login-form-elements_title{
+  text-align: center;
+  margin: 5%;
+  color: black
+
+}
+
+
+.login_popup_div_integration{
+  /* border: 1px solid red; */
+  width: 0%;
+  display: block;
+  /* justify-content: center; */
+  position: fixed;
+  top: 22%;
+  border-radius: 10px;
+  text-align: center;
+  overflow: hidden;
+  
+  }
+.login_popup_div_integration.action{
+  /* top: 22%; */
+  bottom: 22%;
+  /* transition: 1000ms; */
+  width: 100%;
+}
+
+/* signup div */
+
+.dev_signup_form{
+  display: flex;
+  width: 80%;
+  position: fixed;
+  top: -250%;
+  right: 10%;
+  background-color: aliceblue;
+  text-align: center;
+  border-radius: 10px;
+  transition: 1000ms;
+  height: 80%;
+}
+
+.dev_signup_form.action{
+  top: 15%;
+}
+#sign_up_left_div{
+  width: 50%;
+  /* border: 1px solid; */
+  padding-top: 8%;
+  border-radius: 5px;
+  background-color: darkturquoise;
+}
+#sign_up_rite_div{
+  width: 50%;
+
+}
+.signup-form-elements_title{
+  text-align: center;
+    margin: 3%;
+    color: black;
+}
+
+#sign_in_register_forgot_password_div{
+  display: grid;
+  justify-content: space-evenly;
+}
+
+.sign_up_input{
+  width: 70%;
+  background: content-box;
+  border: none;
+  outline: none; 
+  font-weight: 600;
+  border-bottom: 1px solid black;
+}
+
+#sign_in_btn_home{
+  width: 100%; 
+  border-radius: 20p; 
+  font-weight: bold; 
+  outline: none; 
+  border: none; 
+  border-radius: 50px;
+  background-color: royalblue;                
+  color: white;
+}
+
+#remove_popup_btn_login,#remove_popup_btn_signup{
+    position: absolute;
+    font-size: 15px;
+    right: 0px;
+    cursor: pointer;
+    background-color: red;
+    border-radius: 3px;
+    color: white;
+    width: 8%;
+} 
+.signup_form_popup{
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+
+  
+  
+}
+    </style>
+      
+    
+    
+    
+    
+      
+    
+      
+          <script>
+              function password_validations(){
+              var new_password=document.getElementById("login_password").value
+              var confimr_password=document.getElementById("confimr_password").value
+    
+              if(new_password.toString() != confimr_password.toString()){ 
+                  console.log(" enter ",new_password)
+                  console.log(" ed ",confimr_password)
+                  document.getElementById("confimr_password").style="outline:3px solid red"
+                  submit=document.getElementById("register_submit_btm")
+                  submit.disabled="disabled"
+                  submit.style="background-color:#616161;cursor: not-allowed;"
+              }else{
+                  document.getElementById("confimr_password").style=""
+                  submit=document.getElementById("register_submit_btm")
+                  submit.disabled=""
+                  submit.style=""
+    
+              }
+           }
+    
+          </script>
+
+<script>
+    function validate(content,format){
+               var content_format= new Object()
+               content_format= {
+                   "text":"^[a-zA-Z]+$",
+                   "number":"^[6-9]{1}[0-9]{9}$",
+                   "email":"[a-zA-Z0-9\-\.]+[@][a-zA-Z]+[\.][a-zA-Z]{2,3}",      
+  
+               }
+  
+               re=new RegExp(content_format[format])
+               
+               result=re.test(content)
+  
+               return result
+  
+  
+               console.log("Result : ",result)
+               
+  
+           }
+           
+  
+           function validate_creds(id,type){
+               var check=document.getElementById(id).value
+               result=validate(check,type)
+               console.log("op",result)
+               if (check){
+                       if (result){
+                           document.getElementById(id).style=""
+  
+                           
+                       }else{
+                           document.getElementById(id).style="outline:3px solid red"
+                         
+                           
+                       }
+               }
+               console.log("check : ",check)
+         
+               id1=document.getElementById("first_n").style.outlineColor
+               id2=document.getElementById("last_n").style.outlineColor
+               id3=document.getElementById("mobile_no").style.outlineColor
+               id4=document.getElementById("email_id").style.outlineColor
+               id5=document.getElementById("confimr_password").style.outlineColor
+  
+  
+               console.log("id3 :  ",id3,)
+  
+               if (id1||id2||id3||id4||id5){
+                console.log("id3  inner:  ",id3)
+               submit=document.getElementById("register_submit_btm")
+               submit.disabled="disabled"
+               submit.style="background-color:#616161;cursor: not-allowed;"
+               }else{
+               submit=document.getElementById("register_submit_btm")
+               submit.disabled=""
+               submit.style=""
+               }
+  
+           }
+
+
+
+
+
+function login_popup(){
+  // if ('True' =='True'){
+  document.querySelector(".login_popup_div_integration").classList.add('action');
+//   document.getElementById("main_div_homepage").style="opacity: 10%; pointer-events: none;";
+  document.body.style="overflow:hidden;"
+//   document.getElementById("homepage_main_banner_image_div").style="background-color:white"
+//   document.getElementById("homepage_main_banner_image").style="opacity: 10%; pointer-events: none;"
+  document.getElementById("email_validate").style="display:none;";
+  document.querySelector(".div_login-form-elements").classList.add("active")
+
+
+
+};
+
+
+document.querySelector("#remove_popup_btn_login").addEventListener("click",function(){
+//   document.getElementById("homepage_main_banner_image_div").style=""
+  document.querySelector(".div_login-form-elements").classList.remove("active")
+  document.querySelector(".dev_signup_form").classList.remove('action');
+//   document.getElementById("homepage_main_banner_image").style=""
+  document.body.style=""
+//   document.getElementById("main_div_homepage").style="";
+
+  console.log("outer_test")
+
+  function sometime_limit() {
+    document.querySelector(".login_popup_div_integration").classList.remove('action');
+    console.log("clicked sometime_limt")
+
+  }
+
+window.setTimeout(sometime_limit,1000)
+
+
+});
+
+
+document.querySelector("#remove_popup_btn_signup").addEventListener("click",function(){
+  document.querySelector(".login_popup_div_integration").classList.remove('action');
+  
+  document.body.style=""
+  document.getElementById("homepage_main_banner_image").style=""
+  document.querySelector(".dev_signup_form").classList.remove('action');
+  document.getElementById("main_div_homepage").style="";
+  document.querySelector(".div_login-form-elements").classList.remove("active")
+
+
+
+
+})
+
+// state_selection
+
+state_list=[
+"Andaman and Nicobar Islands",
+"Andhra Pradesh",
+"Arunachal Pradesh",
+"Assam",
+"Bihar",
+"Chandigarh",
+"Chhattisgarh",
+"Dadra and Nagar Haveli",
+"Daman and Diu",
+"Delhi",
+"Goa",
+"Gujarat",
+"Haryana",
+"Himachal Pradesh",
+"Jammu and Kashmir",
+"Jharkhand",
+"Karnataka",
+"Kerala",
+"Ladakh",
+"Lakshadweep",
+"Madhya Pradesh",
+"Maharashtra",
+"Manipur",
+"Meghalaya",
+"Mizoram",
+"Nagaland",
+"Narora",
+"Odisha",
+"Pondicherry",
+"Punjab",
+"Rajasthan",
+"Sikkim",
+"Tamil Nadu",
+"Telangana",
+"Tripura",
+"Uttar Pradesh",
+"Uttarakhand",
+"West Bengal",
+]
+for(let a=0;a<state_list.length;a++){
+create_opt_states_name=document.createElement("option")
+create_opt_states_name.value=state_list[a]
+create_opt_states_name.innerHTML=state_list[a]
+document.getElementById("state_selection").appendChild(create_opt_states_name)
+}
+
+// var url_data= window.location.href
+// var url_state_data=url_data.split("State=")[1].replace("%20"," ")
+var url_data=window.location.search
+var url_state_data = new URLSearchParams(url_data).get("State")
+
+// console.log("DAta",url_data.get("State"))
+if (url_data){
+    state_change=document.getElementById("state_selection")
+    state_change.value=url_state_data != "None" ? url_state_data : ""
+
+}
+document.getElementById("state_selection").addEventListener("change",(e)=>{
+
+// below code :- On change the state name we can should city option to filter
+document.getElementById("C82674791ity").hidden = false
+    
+fetch(`/search_for_citites_92839890104958379482983023/${e.target.value}`,{
+    method : "GET",
+}).then(response => {
+        console.log(response);
+        return response.text();
+    }).then(data =>{
+        data_arr=JSON.parse(data)
+        data_arr_len = data_arr.length
+        append_child_at=document.getElementById("city_selection")
+        while (append_child_at.firstChild){
+            append_child_at.removeChild(append_child_at.firstChild)
+        }
+        create_opt_cities_default=document.createElement("option")
+        create_opt_cities_default.innerHTML="City"
+
+
+        append_child_at.appendChild(create_opt_cities_default)
+
+        for(let d1=0;d1<data_arr_len;d1++){
+            create_opt_cities_name=document.createElement("option")
+            create_opt_cities_name.value=data_arr[d1]
+            create_opt_cities_name.innerHTML=data_arr[d1]
+            append_child_at.appendChild(create_opt_cities_name)
+        }
+    }
+
+    )
+})
+
+// city_selection
+// search_for_citites(request)
+  </script>
+
+  <script>
+    // filter scripts
+    function other_price_clicked(val){
+        if (val == "Others"){
+          document.getElementById("other_price_click").style="display:auto"
+          document.getElementById("Min_Range").required="required"
+          document.getElementById("Max_Range").required="required"
+
+        }else{
+          document.getElementById("other_price_click").style="display:none"
+          document.getElementById("Min_Range").required=""
+          document.getElementById("Max_Range").required=""
+
+        }
+      }
+
+      function radio_btn_clicking(input_id,id){
+
+document.getElementById("radio_high_to_low").style=""
+document.getElementById("radio_low_to_high").style=""
+document.getElementById("radio_other_btn").style=""
+
+  document.getElementById(id).style="background-color:darkturquoise;" 
+  document.getElementById(input_id).click()
+
+}
+
+// Radio_Btn_Defaut
+
+function checked_up(id){
+                    check_it=document.getElementById(id)
+                    check_it.click()
+                }
+                function change_bg_cl(id1,id2){
+                    ele_check=document.getElementById(id2)
+                    check_it=document.getElementById(id1)
+                    if(ele_check.checked == true){
+                    check_it.style="background-color:darkturquoise"
+                    }else{
+                        check_it.style=""
+                    }
+                }
+
+
+  </script>
+  
